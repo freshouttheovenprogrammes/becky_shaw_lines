@@ -4,6 +4,8 @@ require './lib/scene_3_module'
 require './lib/scene_4_module'
 require './lib/scene_5_module'
 require './lib/all_module'
+require './lib/file_reader'
+
 
 
 
@@ -34,25 +36,28 @@ class Runner
   end
 end
 
+
 r = Runner.new
 loop do
   puts "Hello and welcome to the Becky Shaw simulation experience!!!!!"
-  sleep(1)
+  sleep(0.5)
   puts "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
-  sleep(1)
+  sleep(0.5)
   puts "Which act would you like to rehearse? Choose from (1) - (5) or ALL"
-  sleep(1)
+  sleep(0.5)
   puts "Just type Scene #"
-  sleep(1)
+  sleep(0.5)
   input = gets.chomp
     if input.downcase == "scene 1"
       r.some_method
+      require "pry"; binding.pry
     elsif input.downcase == "scene 2"
       r.another_method
     elsif input.downcase == "scene 3"
       r.another_1
     elsif input.downcase == "scene 4"
-      r.another_2
+      r.becky_with_the_good_hair_lines
+      r.max_lines
     elsif input.downcase == "scene 5"
       r.another_3
     elsif input.downcase == "all"
@@ -60,7 +65,7 @@ loop do
     elsif input.downcase == "-hint"
       r.hint
     elsif input.downcase == "help"
-      r.help  
+      r.help
     end
   r.other_actor_lines
     if input == "-hint"
@@ -82,4 +87,6 @@ TODO
   * Make different Scene Functionality
   * Add -help feature
     • -hint will give first three words to the thing
+  * What about when the other character is preforming an action that is recorded?
+  * Make something that documents how many times she has needed cues
 =end
