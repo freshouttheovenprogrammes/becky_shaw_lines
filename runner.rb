@@ -10,7 +10,13 @@ require './lib/file_reader'
 
 
 class Runner
+  attr_reader :count
+
   include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
+
+  def initialize
+    @count = 0
+  end
 
   def main_menu
     puts "Hello and welcome to the Becky Shaw simulation experience!!!!!"
@@ -24,10 +30,10 @@ class Runner
   end
 
   def new_scene_menu
+    @count = 0
     puts "Ok, which scene would you like to rehearse now?"
     puts "Choose from (1) - (5) or ALL "
   end
-
 
 r = Runner.new
 loop do
@@ -42,7 +48,7 @@ loop do
     elsif input.downcase == "scene 4"
       r.create_becky_lines_4
       r.create_max_lines_4
-      puts "You say the first line here. Press Enter to begin"
+      puts "You say the first line on this scene. Press Enter to begin and reveal your first line, pressing enter again will start the Max line."
       gets.chomp
         loop do
           r.becky_output_4
@@ -51,6 +57,7 @@ loop do
           next_one = gets.chomp
           if next_one == '-hint'
             r.hint_4
+          gets.chomp
           end
           break if next_one == 'exit'
         end
@@ -73,6 +80,7 @@ end
 
 #TODO
 
+  # * experiment with using different loops!
   # * What happens when I get to the end of the scene?
   # * Make different Scene Functionality
   # * Add -help feature
