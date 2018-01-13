@@ -10,11 +10,15 @@ require './lib/file_reader'
 
 
 class Runner
-  attr_reader :count
+  attr_accessor :count
 
   include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
 
   def initialize
+    @count = 0
+  end
+
+  def reset_count
     @count = 0
   end
 
@@ -27,6 +31,7 @@ class Runner
     sleep(0.5)
     puts "Just type Scene #"
     sleep(0.5)
+    reset_count
   end
 
   def new_scene_menu
@@ -45,26 +50,6 @@ class Runner
         elsif user_input == 'scene 5'
           scene_5_loop
         end
-  end
-
-  def scene_4_loop
-    create_becky_lines_4
-    create_max_lines_4
-    puts "You say the first line on this scene. Press Enter to begin and reveal your first line, pressing enter again will start the Max line."
-    gets.chomp
-      loop do
-        becky_output_4
-        gets.chomp
-        max_say_4
-        next_one = gets.chomp
-        if next_one == '-hint'
-          hint_4
-        elsif next_one == 'main_menu'
-          main_menu    
-        gets.chomp
-        end
-        break if next_one == 'exit'
-      end
   end
 
 r = Runner.new
@@ -88,8 +73,6 @@ loop do
     elsif input.downcase == "help"
       r.help
     end
-  # r.other_actor_lines
-  # r.amber_current_line
   next_one = gets.chomp
   break if next_one == "exit"
 end
@@ -103,5 +86,6 @@ end
   # * Make different Scene Functionality
   # * Add -help feature
   #   • -hint will give first three words to the thing
+  #   ¨ -hint will increase a counter that will display at the end of a scene
   # * What about when the other character is preforming an action that is recorded?
   # * Make something that documents how many times she has needed cues

@@ -4,8 +4,8 @@ module Scene4
   # attr_reader :count
   include FileReader
 
-  BECKY_LINES_4 = []
-  MAX_LINES_4 = []
+  BECKY_LINES_4 ||= []
+  MAX_LINES_4 ||= []
 
 
   def create_becky_lines_4
@@ -39,5 +39,26 @@ module Scene4
     cue = BECKY_LINES_4[@count].split(" ")
       puts "#{cue.first(4).join(" ")}"
   end
+
+
+    def scene_4_loop
+      create_becky_lines_4
+      create_max_lines_4
+      puts "You say the first line on this scene. Press Enter to begin and reveal your first line, pressing enter again will start the Max line."
+      gets.chomp
+        loop do
+          becky_output_4
+          gets.chomp
+          max_say_4
+          next_one = gets.chomp
+          if next_one == '-hint'
+            hint_4
+          elsif next_one == 'main_menu'
+            main_menu
+          gets.chomp
+          end
+          break if next_one == 'exit'
+        end
+    end
 
 end
