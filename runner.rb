@@ -13,9 +13,9 @@ class Runner
   attr_reader :count
   include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
 
-  OTHER_ACTOR_LINE = ["other actor", "say this is line two", "line three"]
-
-  AMBER_LINE =  ["here is a clue", "this is a test", "this is the third one"]
+  # OTHER_ACTOR_LINE = ["other actor", "say this is line two", "line three"]
+  #
+  # AMBER_LINE =  ["here is a clue", "this is a test", "this is the third one"]
 
   def initialize
    @count = 0
@@ -55,8 +55,8 @@ loop do
     elsif input.downcase == "scene 3"
       r.another_1
     elsif input.downcase == "scene 4"
-      r.becky_with_the_good_hair_lines
-      r.max_lines
+      r.create_becky_lines_4
+      r.create_max_lines_4
     elsif input.downcase == "scene 5"
       r.another_3
     elsif input.downcase == "all"
