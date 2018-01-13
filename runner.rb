@@ -56,8 +56,16 @@ loop do
       r.another_1
     elsif input.downcase == "scene 4"
       r.create_becky_lines_4
-      require "pry"; binding.pry
       r.create_max_lines_4
+      puts "You say the first line here. Press Enter to begin"
+      gets.chomp
+        loop do
+          r.becky_output_4
+          gets.chomp
+          r.max_say_4
+          next_one = gets.chomp
+          break if next_one == 'exit'
+        end
     elsif input.downcase == "scene 5"
       r.another_3
     elsif input.downcase == "all"
