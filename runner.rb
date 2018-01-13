@@ -33,6 +33,38 @@ class Runner
     @count = 0
     puts "Ok, which scene would you like to rehearse now?"
     puts "Choose from (1) - (5) or ALL "
+      user_input = gets.chomp
+        if user_input == 'scene 1'
+          scene_1_loop
+        elsif user_input == 'scene 2'
+          scene_2_loop
+        elsif user_input == 'scene 3'
+          scene_3_loop
+        elsif user_input == 'scene 4'
+          scene_4_loop
+        elsif user_input == 'scene 5'
+          scene_5_loop
+        end
+  end
+
+  def scene_4_loop
+    create_becky_lines_4
+    create_max_lines_4
+    puts "You say the first line on this scene. Press Enter to begin and reveal your first line, pressing enter again will start the Max line."
+    gets.chomp
+      loop do
+        becky_output_4
+        gets.chomp
+        max_say_4
+        next_one = gets.chomp
+        if next_one == '-hint'
+          hint_4
+        elsif next_one == 'main_menu'
+          main_menu    
+        gets.chomp
+        end
+        break if next_one == 'exit'
+      end
   end
 
 r = Runner.new
@@ -46,21 +78,7 @@ loop do
     elsif input.downcase == "scene 3"
       r.another_1
     elsif input.downcase == "scene 4"
-      r.create_becky_lines_4
-      r.create_max_lines_4
-      puts "You say the first line on this scene. Press Enter to begin and reveal your first line, pressing enter again will start the Max line."
-      gets.chomp
-        loop do
-          r.becky_output_4
-          gets.chomp
-          r.max_say_4
-          next_one = gets.chomp
-          if next_one == '-hint'
-            r.hint_4
-          gets.chomp
-          end
-          break if next_one == 'exit'
-        end
+      r.scene_4_loop
     elsif input.downcase == "scene 5"
       r.another_3
     elsif input.downcase == "all"
