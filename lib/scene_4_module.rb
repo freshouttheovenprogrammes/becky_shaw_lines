@@ -6,11 +6,12 @@ module Scene4
   BECKY_LINES = []
   MAX_LINES = []
 
+
   def becky_with_the_good_hair_lines
     text_reader('./data/scene_4.txt').find_all do |line|
       BECKY_LINES << line if line.include?("BECKY")
       require "pry"; binding.pry
-    end.chomp
+    end
   end
 
   def max_lines

@@ -1,7 +1,10 @@
 module FileReader
 
   def text_reader(data)
-    File.readlines(data, 'r')
+    array = File.readlines(data, 'r')
+      array.map do |line|
+        [line]
+      end
   end
 
 end

@@ -50,7 +50,6 @@ loop do
   input = gets.chomp
     if input.downcase == "scene 1"
       r.some_method
-      require "pry"; binding.pry
     elsif input.downcase == "scene 2"
       r.another_method
     elsif input.downcase == "scene 3"
