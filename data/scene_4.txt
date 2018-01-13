@@ -6,7 +6,6 @@ BECKY I’m sure.
 MAX But I’ve made time. To talk about whatever you need to talk about to put this event behind you.
 BECKY I gather from Andrew you feel it already is behind you.
 MAX I do.
-ACTION She waits for him to say more. He doesn’t.
 BECKY It’s been upsetting for me.
 MAX Of course.
 BECKY No, I want to apologize. I was very pushy. Calling you all the time. I regret that. I really do.
@@ -49,9 +48,7 @@ BECKY But that’s love, isn’t it? Anything that matters carries the potential
 MAX Love, Becky. We had one date.
 BECKY I gave you power prematurely. Is that it?
 MAX I don’t want to do this.
-ACTION He rises to leave.
 BECKY This doesn’t hurt me! It helps. Please sit for a second.
-ACTION He does.
 BECKY I took some wrong turns, Max, and I changed. See, when I was in college
 MAX I don’t, I don’t care. I’m sorry. This is starting to feel like the second date I didn’t want to have.
 BECKY Ok. I just wanted you to know I wasn’t always like this. And I feel I can get back to being myself - my good self - if I’m really fearless in examining
@@ -64,7 +61,6 @@ BECKY Then I don’t owe you any either. Right?
 MAX Are you threatening me?
 BECKY I’m not good enough to date, but I am good enough to... to fuck and to be trusted with a confidence that you would not like me to betray. At the police station? I said you have to call Suzanna, she’s your family. You said, “She not family. I don’t fuck family.” Andrew doesn’t know.
 MAX You’re a fraud.
-ACTION He grabs her arm.
 BECKY Stop it. You’re hurting me.
 MAX You care, you understand as long as you get what you want. You just went from trying to date me to blackmailing me in about three minutes. You’re a scary person, Becky, and I knew it the minute I met you.
 BECKY Then you shouldn’t have fucked me. If I was that person you just described, I’d have screamed by now and had you arrested for assault. Let go of my arm and walk away.
