@@ -3,13 +3,13 @@ require_relative 'file_reader'
 module Scene4
   include FileReader
 
-  BECKY_LINES = []
-  MAX_LINES = []
+  BECKY_LINES_4 = []
+  MAX_LINES_4 = []
 
 
-  def create_becky_lines
+  def create_becky_lines_4
     text_reader('./data/scene_4.txt').find_all do |line|
-      BECKY_LINES << line if line.include?("BECKY")
+      BECKY_LINES_4 << line if line.include?("BECKY")
       require "pry"; binding.pry
        # when it hits that data,
       #the first line only comes out to [BECKY I under] not sure why
@@ -17,9 +17,9 @@ module Scene4
     end
   end
 
-  def create_max_lines
+  def create_max_lines_4
     text_reader('./data/scene_4.txt').find_all do |line|
-      MAX_LINES << line if line.include?("MAX")
+      MAX_LINES_4 << line if line.include?("MAX")
     end
   end
 

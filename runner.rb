@@ -56,6 +56,7 @@ loop do
       r.another_1
     elsif input.downcase == "scene 4"
       r.create_becky_lines_4
+      require "pry"; binding.pry
       r.create_max_lines_4
     elsif input.downcase == "scene 5"
       r.another_3
@@ -66,15 +67,8 @@ loop do
     elsif input.downcase == "help"
       r.help
     end
-  r.other_actor_lines
-    if input == "-hint"
-      r.hint
-      gets.chomp
-    elsif input == "-help"
-      r.help
-      gets.chomp
-    end
-  r.amber_current_line
+  # r.other_actor_lines
+  # r.amber_current_line
   next_one = gets.chomp
   break if next_one == "exit"
 end
