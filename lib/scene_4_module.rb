@@ -9,13 +9,13 @@ module Scene4
 
 
   def create_becky_lines_4
-    text_reader('./data/scene_4.txt').find_all do |line|
+    text_reader('./data/short_scene_test.txt').find_all do |line|
       BECKY_LINES_4 << line.chomp if line.include?("BECKY")
     end
   end
 
   def create_max_lines_4
-    text_reader('./data/scene_4.txt').find_all do |line|
+    text_reader('./data/short_scene_test.txt').find_all do |line|
       MAX_LINES_4 << line.chomp if line.include?("Max,")
     end
   end
@@ -50,6 +50,7 @@ module Scene4
           becky_output_4
           gets.chomp
           max_say_4
+          scene_over_4
           next_one = gets.chomp
           if next_one == '-hint'
             hint_4

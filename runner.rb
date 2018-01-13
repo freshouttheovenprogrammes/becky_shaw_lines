@@ -4,6 +4,7 @@ require './lib/scene_3_module'
 require './lib/scene_4_module'
 require './lib/scene_5_module'
 require './lib/all_module'
+require './lib/help_module'
 require './lib/file_reader'
 
 
@@ -12,7 +13,7 @@ require './lib/file_reader'
 class Runner
   attr_accessor :count
 
-  include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
+  include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes, HelpModule
 
   def initialize
     @count = 0
@@ -35,7 +36,7 @@ class Runner
   end
 
   def new_scene_menu
-    @count = 0
+    reset_count
     puts "Ok, which scene would you like to rehearse now?"
     puts "Choose from (1) - (5) or ALL "
       user_input = gets.chomp
@@ -57,15 +58,15 @@ loop do
   r.main_menu
   input = gets.chomp
     if input.downcase == "scene 1"
-      r.some_method
+      r.scene_1_loop
     elsif input.downcase == "scene 2"
-      r.another_method
+      r.scene_2_loop
     elsif input.downcase == "scene 3"
-      r.another_1
+      r.scene_3_loop
     elsif input.downcase == "scene 4"
       r.scene_4_loop
     elsif input.downcase == "scene 5"
-      r.another_3
+      r.scene_5_loop
     elsif input.downcase == "all"
       r.final
     elsif input.downcase == "-hint"
