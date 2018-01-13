@@ -1,25 +1,43 @@
 require_relative 'file_reader'
 
 module Scene4
+  # attr_reader :count
   include FileReader
 
-  BECKY_LINES = []
-  MAX_LINES = []
+  BECKY_LINES_4 = []
+  MAX_LINES_4 = []
 
-  def becky_with_the_good_hair_lines
+
+  def create_becky_lines_4
     text_reader('./data/scene_4.txt').find_all do |line|
-      BECKY_LINES << line if line.include?("BECKY")
-      require "pry"; binding.pry
-    end.chomp
+      BECKY_LINES_4 << line.chomp if line.include?("BECKY")
+    end
   end
 
-  def max_lines
-    text_reader('./data/scene4.txt').find_all do |line|
-      MAX_LINES << line if line.include?("MAX")
-    end.chomp
+  def create_max_lines_4
+    text_reader('./data/scene_4.txt').find_all do |line|
+      MAX_LINES_4 << line.chomp if line.include?("Max,")
+    end
   end
 
-  def another_2
-    `say scene 4`
+  def max_say_4
+    `say #{MAX_LINES_4[count]}`
+    @count += 1
   end
+
+  def becky_output_4
+    puts "#{BECKY_LINES_4[@count]}"
+  end
+
+  def scene_over_4
+    if @count == BECKY_LINES_4.length
+      new_scene_menu
+    end
+  end
+
+  def hint_4
+    cue = BECKY_LINES_4[@count].split(" ")
+      puts "#{cue.first(4).join(" ")}"
+  end
+
 end
