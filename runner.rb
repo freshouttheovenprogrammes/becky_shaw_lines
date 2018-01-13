@@ -1,6 +1,15 @@
+require './lib/scene_1_module'
+require './lib/scene_2_module'
+require './lib/scene_3_module'
+require './lib/scene_4_module'
+require './lib/scene_5_module'
+require './lib/all_module'
+
+
+
 class Runner
   attr_reader :count
-  include Scene1, Scene2, Scene3, Scene4, Scene5, All
+  include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
 
   OTHER_ACTOR_LINE = ["other actor", "say this is line two", "line three"]
 
@@ -16,7 +25,6 @@ class Runner
 
   def hint
     cue = AMBER_LINE[@count].split(" ")
-    # require "pry"; binding.pry
       puts "BECKY: #{cue.first(3).join(" ")}"
   end
 
@@ -37,18 +45,22 @@ loop do
   puts "Just type Scene #"
   sleep(1)
   input = gets.chomp
-    if input == "Scene 1"
+    if input.downcase == "scene 1"
       r.some_method
-    elsif input == "Scene 2"
+    elsif input.downcase == "scene 2"
       r.another_method
-    elsif input == "Scene 3"
+    elsif input.downcase == "scene 3"
       r.another_1
-    elsif input == "Scene 4"
+    elsif input.downcase == "scene 4"
       r.another_2
-    elsif input == "Scene 5"
+    elsif input.downcase == "scene 5"
       r.another_3
-    elsif input == "ALL"
+    elsif input.downcase == "all"
       r.final
+    elsif input.downcase == "-hint"
+      r.hint
+    elsif input.downcase == "help"
+      r.help  
     end
   r.other_actor_lines
     if input == "-hint"
@@ -67,9 +79,7 @@ end
 =begin
 TODO
 
-  * intro prompt that leads into the "current" scene
   * Make different Scene Functionality
   * Add -help feature
-    * -hint will give first three words to the thing
-  *
+    • -hint will give first three words to the thing
 =end
