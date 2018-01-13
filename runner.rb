@@ -4,89 +4,90 @@ require './lib/scene_3_module'
 require './lib/scene_4_module'
 require './lib/scene_5_module'
 require './lib/all_module'
+require './lib/help_module'
 require './lib/file_reader'
 
-
-
-
 class Runner
-  attr_reader :count
-  include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
+  attr_accessor :count, :hint_count
 
-  OTHER_ACTOR_LINE = ["other actor", "say this is line two", "line three"]
-
-  AMBER_LINE =  ["here is a clue", "this is a test", "this is the third one"]
+  include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes, HelpModule
 
   def initialize
-   @count = 0
+    @count = 0
+    @hint_count = 0
   end
 
-  def other_actor_lines
-    `say "#{OTHER_ACTOR_LINE[@count]}"`
+  def reset_count
+    @count = 0
   end
 
-  def hint
-    cue = AMBER_LINE[@count].split(" ")
-      puts "BECKY: #{cue.first(3).join(" ")}"
+  def reset_hint_count
+    @hint_count = 0
   end
 
-  def amber_current_line
-    puts "BECKY: #{AMBER_LINE[@count]}"
-    @count += 1
+  def blow_up
+    puts "Thats not something I know what to do with! Let me take you to the main menu"
+    main_menu
+    reset_hint_count
   end
-end
 
+  def main_menu
+    puts "Hello and welcome to the Becky Shaw simulation experience!!!!!"
+    sleep(0.45)
+    puts "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
+    sleep(0.45)
+    puts "Type help if you need some instructions!"
+    sleep(0.45)
+    puts "Which act would you like to rehearse? Choose from (1) - (5) or ALL"
+    sleep(0.45)
+    puts "Just type Scene #"
+    sleep(0.45)
+    reset_count
+    reset_hint_count
+  end
+
+  def new_scene_menu
+    reset_count
+    puts "Ok, which scene would you like to rehearse now?"
+    puts "Choose from (1) - (5) or ALL "
+    user_input = gets.chomp
+    if user_input == 'scene 1'
+      scene_1_loop
+    elsif user_input == 'scene 2'
+      scene_2_loop
+    elsif user_input == 'scene 3'
+      scene_3_loop
+    elsif user_input == 'scene 4'
+      scene_4_loop
+    elsif user_input == 'scene 5'
+      scene_5_loop
+    else
+      blow_up
+    end
+  end
 
 r = Runner.new
-loop do
-  puts "Hello and welcome to the Becky Shaw simulation experience!!!!!"
-  sleep(0.5)
-  puts "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
-  sleep(0.5)
-  puts "Which act would you like to rehearse? Choose from (1) - (5) or ALL"
-  sleep(0.5)
-  puts "Just type Scene #"
-  sleep(0.5)
-  input = gets.chomp
+  loop do
+    r.main_menu
+    input = gets.chomp
     if input.downcase == "scene 1"
-      r.some_method
-      require "pry"; binding.pry
+      r.scene_1_loop
     elsif input.downcase == "scene 2"
-      r.another_method
+      r.scene_2_loop
     elsif input.downcase == "scene 3"
-      r.another_1
+      r.scene_3_loop
     elsif input.downcase == "scene 4"
-      r.becky_with_the_good_hair_lines
-      r.max_lines
+      r.scene_4_loop
     elsif input.downcase == "scene 5"
-      r.another_3
+      r.scene_5_loop
     elsif input.downcase == "all"
       r.final
-    elsif input.downcase == "-hint"
+    elsif input.downcase == "hint"
       r.hint
     elsif input.downcase == "help"
-      r.help
+      r.help_output
     end
-  r.other_actor_lines
-    if input == "-hint"
-      r.hint
-      gets.chomp
-    elsif input == "-help"
-      r.help
-      gets.chomp
-    end
-  r.amber_current_line
-  next_one = gets.chomp
-  break if next_one == "exit"
+    next_one = gets.chomp
+    break if next_one == "exit"
+  end
 end
-
-
-=begin
-TODO
-
-  * Make different Scene Functionality
-  * Add -help feature
-    • -hint will give first three words to the thing
-  * What about when the other character is preforming an action that is recorded?
-  * Make something that documents how many times she has needed cues
-=end

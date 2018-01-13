@@ -1,7 +1,9 @@
 module FileReader
 
   def text_reader(data)
-    File.readlines(data, 'r')
+    File.open(data, 'r').reduce([]) do |lines, line|
+      lines << line
+      lines
+      end
   end
-
 end
