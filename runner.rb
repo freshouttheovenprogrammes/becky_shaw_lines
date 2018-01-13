@@ -10,43 +10,28 @@ require './lib/file_reader'
 
 
 class Runner
-  attr_reader :count
   include Scene1, Scene2, Scene3, Scene4, Scene5, AllScenes
 
-  # OTHER_ACTOR_LINE = ["other actor", "say this is line two", "line three"]
-  #
-  # AMBER_LINE =  ["here is a clue", "this is a test", "this is the third one"]
-
-  def initialize
-   @count = 0
+  def main_menu
+    puts "Hello and welcome to the Becky Shaw simulation experience!!!!!"
+    sleep(0.5)
+    puts "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
+    sleep(0.5)
+    puts "Which act would you like to rehearse? Choose from (1) - (5) or ALL"
+    sleep(0.5)
+    puts "Just type Scene #"
+    sleep(0.5)
   end
 
-  def other_actor_lines
-    `say "#{OTHER_ACTOR_LINE[@count]}"`
+  def new_scene_menu
+    puts "Ok, which scene would you like to rehearse now?"
+    puts "Choose from (1) - (5) or ALL "
   end
-
-  def hint
-    cue = AMBER_LINE[@count].split(" ")
-      puts "BECKY: #{cue.first(3).join(" ")}"
-  end
-
-  def amber_current_line
-    puts "BECKY: #{AMBER_LINE[@count]}"
-    @count += 1
-  end
-end
 
 
 r = Runner.new
 loop do
-  puts "Hello and welcome to the Becky Shaw simulation experience!!!!!"
-  sleep(0.5)
-  puts "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
-  sleep(0.5)
-  puts "Which act would you like to rehearse? Choose from (1) - (5) or ALL"
-  sleep(0.5)
-  puts "Just type Scene #"
-  sleep(0.5)
+  r.main_menu
   input = gets.chomp
     if input.downcase == "scene 1"
       r.some_method
@@ -64,6 +49,9 @@ loop do
           gets.chomp
           r.max_say_4
           next_one = gets.chomp
+          if next_one == '-hint'
+            r.hint_4
+          end
           break if next_one == 'exit'
         end
     elsif input.downcase == "scene 5"
@@ -80,14 +68,14 @@ loop do
   next_one = gets.chomp
   break if next_one == "exit"
 end
+end
 
 
-=begin
-TODO
+#TODO
 
-  * Make different Scene Functionality
-  * Add -help feature
-    • -hint will give first three words to the thing
-  * What about when the other character is preforming an action that is recorded?
-  * Make something that documents how many times she has needed cues
-=end
+  # * What happens when I get to the end of the scene?
+  # * Make different Scene Functionality
+  # * Add -help feature
+  #   • -hint will give first three words to the thing
+  # * What about when the other character is preforming an action that is recorded?
+  # * Make something that documents how many times she has needed cues
